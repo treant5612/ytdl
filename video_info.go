@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"github.com/rs/zerolog/log"
+	"github.com/treant5612/y2bcaptions"
 )
 
 const youtubeBaseURL = "https://www.youtube.com/watch"
@@ -36,6 +37,7 @@ type VideoInfo struct {
 	Writers        string
 	Duration       time.Duration // Duration of the video
 	htmlPlayerFile string
+	Captions       *y2bcaptions.Captions
 }
 
 // GetVideoInfo fetches info from a url string, url object, or a url string
@@ -294,6 +296,11 @@ func getVideoInfoFromHTML(id string, html []byte) (*VideoInfo, error) {
 	}
 	info.Formats = formats
 
+	captions, err := y2bcaptions.GetCaptionInfoFromHtml(id, html)
+	if err != nil {
+		log.Printf("get captions failed:%v\n", err)
+	}
+	info.Captions = captions
 	return info, nil
 }
 

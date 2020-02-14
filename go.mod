@@ -8,6 +8,7 @@ require (
 	github.com/olekukonko/tablewriter v0.0.1
 	github.com/rs/zerolog v1.16.0
 	github.com/stretchr/testify v1.4.0
+	github.com/treant5612/y2bcaptions v0.0.0-20200214082019-09d70222f437
 	github.com/urfave/cli v1.22.1
 	golang.org/x/sys v0.0.0-20191104094858-e8c54fb511f6 // indirect
 )
